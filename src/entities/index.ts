@@ -1,1 +1,3 @@
-/* centralizar import export */
+import { Movie } from './movies.entity';
+
+export { Movie };
