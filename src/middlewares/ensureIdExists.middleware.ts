@@ -7,7 +7,7 @@ import { iMovieRepo } from '../interfaces';
 const ensureIdExistsMiddleware = async (request: Request, response: Response, next: NextFunction) => {
     const movieRepository: iMovieRepo = AppDataSource.getRepository(Movie);
     const idParam = parseInt(request.params.id);
-    const findMovie = await movieRepository.exist({ where: { id: idParam } });
+    const findMovie = await movieRepository.findOne({ where: { id: idParam } });
 
     if (!findMovie) {
         throw new AppError('Movie not found', 404);
