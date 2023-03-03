@@ -8,9 +8,9 @@ const ensureNameDontExistsMiddleware = async (request: Request, response: Respon
     const movieRepository: iMovieRepo = AppDataSource.getRepository(Movie);
     const nameMovie = request.body.name;
     if (nameMovie) {
-        const findEmail = await movieRepository.exist({ where: { name: nameMovie } });
+        const findName = await movieRepository.exist({ where: { name: nameMovie } });
 
-        if (findEmail) {
+        if (findName) {
             throw new AppError('Movie already exists.', 409);
         }
     }
